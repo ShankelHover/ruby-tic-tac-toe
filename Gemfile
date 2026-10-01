@@ -4,7 +4,7 @@ source "https://rubygems.org"
 gem "rails", "~> 8.1.3", ">= 8.1.3.1"
 # json 3.x drops the positional options argument that ActiveSupport::JSON.decode
 # still passes, which breaks encrypted cookie/session deserialization.
-gem "json", "~> 2.9"
+gem "json", "~> 3.0"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
