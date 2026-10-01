@@ -1,0 +1,9 @@
+<% content_for :title, "Tic-Tac-Toe" %>
+
+<h1>Tic-Tac-Toe</h1>
+
+<div class="board">
+  <% 9.times do |i| %>
+    <div class="cell" data-index="<%= i %>"></div>
+  <% end %>
+</div>
