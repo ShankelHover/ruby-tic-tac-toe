@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+new_game:
+  board: "........."
+  current_player: X
+
+in_progress:
+  board: "X...O...."
+  current_player: X
