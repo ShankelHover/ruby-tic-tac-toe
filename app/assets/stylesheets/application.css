@@ -47,3 +47,31 @@ main {
   background: #f4f4f4;
   border: 2px solid #333;
 }
+
+.cell-form {
+  display: contents;
+}
+
+.cell.playable {
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
+.cell.playable:hover {
+  background: #e4e4e4;
+}
+
+.status {
+  font-size: 1.25rem;
+}
+
+.alert {
+  color: #b00020;
+}
+
+.reset {
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}

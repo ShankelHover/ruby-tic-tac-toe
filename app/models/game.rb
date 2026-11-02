@@ -43,6 +43,10 @@ class Game < ApplicationRecord
     save!
   end
 
+  def reset!
+    update!(board: EMPTY * 9, current_player: PLAYERS.first)
+  end
+
   private
 
   def next_player

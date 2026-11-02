@@ -2,8 +2,29 @@
 
 <h1>Tic-Tac-Toe</h1>
 
+<p class="status">
+  <% if @game.winner %>
+    <%= @game.winner %> wins!
+  <% elsif @game.draw? %>
+    It's a draw.
+  <% else %>
+    <%= @game.current_player %> to move
+  <% end %>
+</p>
+
+<% if flash[:alert] %>
+  <p class="alert"><%= flash[:alert] %></p>
+<% end %>
+
 <div class="board">
-  <% 9.times do |i| %>
-    <div class="cell" data-index="<%= i %>"></div>
+  <% @game.cells.each_with_index do |mark, i| %>
+    <% if mark == Game::EMPTY && !@game.over? %>
+      <%= button_to "", move_game_path, params: { index: i }, class: "cell playable", form_class: "cell-form",
+                    data: { index: i }, aria: { label: "Play square #{i + 1}" } %>
+    <% else %>
+      <div class="cell" data-index="<%= i %>"><%= mark unless mark == Game::EMPTY %></div>
+    <% end %>
   <% end %>
 </div>
+
+<%= button_to "Reset", reset_game_path, class: "reset" %>

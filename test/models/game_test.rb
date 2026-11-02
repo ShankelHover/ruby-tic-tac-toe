@@ -80,4 +80,12 @@ class GameTest < ActiveSupport::TestCase
     assert_not Game.new(board: "ABCDEFGHI").valid?
     assert_not Game.new(current_player: "Z").valid?
   end
+
+  test "reset clears the board and gives X the first move" do
+    game = Game.create!(board: "XX.OO....", current_player: "O")
+    game.reset!
+
+    assert_equal ".........", game.reload.board
+    assert_equal "X", game.current_player
+  end
 end
