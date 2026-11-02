@@ -5,10 +5,15 @@ class GamesController < ApplicationController
   end
 
   def move
-    @game.play!(params[:index].to_i)
+    @game.play_against_computer!(params[:index].to_i)
     redirect_to root_path
   rescue Game::IllegalMove => e
     redirect_to root_path, alert: e.message
+  end
+
+  def update
+    @game.update(difficulty: params[:difficulty])
+    redirect_to root_path
   end
 
   def reset

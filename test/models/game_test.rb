@@ -88,4 +88,24 @@ class GameTest < ActiveSupport::TestCase
     assert_equal ".........", game.reload.board
     assert_equal "X", game.current_player
   end
+
+  test "the computer replies to the human's move" do
+    game = games(:new_game)
+    game.play_against_computer!(4)
+
+    assert_equal "X", game.cells[4]
+    assert_equal 1, game.cells.count("O")
+    assert_equal "X", game.current_player
+  end
+
+  test "the computer does not move after the human wins" do
+    game = Game.create!(board: "XX.OO....")
+    game.play_against_computer!(2)
+
+    assert_equal "XXXOO....", game.board
+  end
+
+  test "validates difficulty" do
+    assert_not Game.new(difficulty: "cheating").valid?
+  end
 end

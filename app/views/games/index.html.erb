@@ -2,13 +2,24 @@
 
 <h1>Tic-Tac-Toe</h1>
 
+<div class="difficulty">
+  Computer plays:
+  <% ComputerPlayer::DIFFICULTIES.each do |difficulty| %>
+    <%= button_to difficulty.capitalize, game_path, method: :patch, params: { difficulty: difficulty },
+                  class: [ "difficulty-option", { selected: @game.difficulty == difficulty } ],
+                  form_class: "difficulty-form", aria: { pressed: @game.difficulty == difficulty } %>
+  <% end %>
+</div>
+
 <p class="status">
-  <% if @game.winner %>
-    <%= @game.winner %> wins!
+  <% if @game.winner == Game::HUMAN %>
+    You win!
+  <% elsif @game.winner %>
+    The computer wins.
   <% elsif @game.draw? %>
     It's a draw.
   <% else %>
-    <%= @game.current_player %> to move
+    Your move (<%= Game::HUMAN %>)
   <% end %>
 </p>
 
