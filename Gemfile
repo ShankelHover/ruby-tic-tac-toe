@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.1.3", ">= 8.1.3.1"
+gem "rails", "~> 8.1.4"
 # json 3.x drops the positional options argument that ActiveSupport::JSON.decode
 # still passes, which breaks encrypted cookie/session deserialization.
 gem "json", "~> 2.9"
